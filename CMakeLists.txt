@@ -16,6 +16,11 @@ add_executable (Obsn
   "source/Init.h"
 )
 
+set_target_properties (Obsn
+  PROPERTIES
+  RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/$<CONFIG>"
+)
+
 add_definitions (-DGLFW_INCLUDE_NONE)
 
 target_link_libraries (Obsn glad glfw)
