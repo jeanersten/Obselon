@@ -6,6 +6,11 @@
 #include <iostream>
 #include <string>
 
+void framebufferSizeCallback(GLFWwindow* window, int width, int height)
+{
+  glViewport(0, 0, width, height);
+}
+
 Obsn::Graphics::Window::Window(int width, int height, const char* title)
   : m_width(width)
   , m_height(height)
@@ -41,6 +46,7 @@ bool Obsn::Graphics::Window::create()
   }
 
   glfwSwapInterval(1);
+  glfwSetFramebufferSizeCallback(m_object, framebufferSizeCallback);
 
   glClearColor(0.36f, 0.51f, 0.63f, 1.0f);
   glClearDepth(1.0f);
