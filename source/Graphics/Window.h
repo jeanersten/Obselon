@@ -25,6 +25,7 @@ namespace Obsn
 
       bool closed();
 
+      void clear();
       void update();
     };
   }

@@ -20,6 +20,10 @@ Obsn::Graphics::Window::~Window()
 
 bool Obsn::Graphics::Window::create()
 {
+  glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+  glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+  glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+
   m_object = glfwCreateWindow(m_width, m_height, m_title, nullptr, nullptr);
 
   if (m_object == nullptr)
@@ -41,7 +45,6 @@ bool Obsn::Graphics::Window::create()
   glClearColor(0.36f, 0.51f, 0.63f, 1.0f);
   glClearDepth(1.0f);
 
-
   return true;
 }
 
@@ -50,10 +53,13 @@ bool Obsn::Graphics::Window::closed()
   return glfwWindowShouldClose(m_object);
 }
 
-void Obsn::Graphics::Window::update()
+void Obsn::Graphics::Window::clear()
 {
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+}
 
+void Obsn::Graphics::Window::update()
+{
   glfwPollEvents();
   glfwSwapBuffers(m_object);
 }

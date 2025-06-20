@@ -16,6 +16,7 @@ void Obsn::Game::update()
 {
   while (!m_window.closed())
   {
+    m_window.clear();
     m_window.update();
   }
 }
